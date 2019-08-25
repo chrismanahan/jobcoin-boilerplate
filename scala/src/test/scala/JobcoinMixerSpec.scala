@@ -1,8 +1,10 @@
 package com.gemini.jobcoin
 
 import org.scalatest._
-import java.io.{ByteArrayOutputStream, ByteArrayInputStream}
+import java.io.{ByteArrayInputStream, ByteArrayOutputStream}
 import java.nio.charset.StandardCharsets
+
+import frontend.JobcoinMixer
 
 class MixerTests extends FlatSpec with Matchers {
   "Main method" should "print the help text when no args are given" in {
@@ -16,7 +18,7 @@ class MixerTests extends FlatSpec with Matchers {
     }
 
     val expectedOutput = s"""${JobcoinMixer.prompt}
-    |You must specify empty addresses to mix into!
+    |You must specify empty subscribers to mix into!
     |${JobcoinMixer.helpText}
     |${JobcoinMixer.prompt}
     |Quitting...
@@ -35,7 +37,7 @@ class MixerTests extends FlatSpec with Matchers {
       }
     }
 
-    val pattern = "You may now send Jobcoins to address [0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}. They will be mixed and sent to your destination addresses.".r
+    val pattern = "You may now send Jobcoins to address [0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}. They will be mixed and sent to your destination subscribers.".r
     val regexMatches = pattern findFirstIn outCapture.toString
 
     regexMatches.isEmpty should be(false)

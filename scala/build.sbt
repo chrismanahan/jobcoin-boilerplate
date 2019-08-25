@@ -20,3 +20,11 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-stream" % "2.5.12",
   "com.typesafe.akka" %% "akka-stream-testkit" % "2.5.12" % Test
 )
+
+resolvers += "SQLite-JDBC Repository" at "https://oss.sonatype.org/content/repositories/snapshots"
+
+libraryDependencies ++= Seq(
+  "org.xerial" % "sqlite-jdbc" % "3.8.6" jar
+)
+
+libraryDependencies += "org.mockito" % "mockito-core" % "1.9.5" % Test
